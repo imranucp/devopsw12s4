@@ -1,0 +1,20 @@
+name: ci-wf
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+jobs:
+  linting-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Welcome Step
+        run: echo "Welcome To Linting"
+      - name: Clone Repository
+        uses: actions/checkout@v4
+      - name: Install HTMLHint
+        run: npm install --save-dev htmlhint
+      - name: Lint HTML
+        run: npx htmlhint "**/*.html"      
